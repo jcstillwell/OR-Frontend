@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: lightblue;
+    border: 1px black solid;
+    transition: all 0.3s ease;
+  }
+
+  .container:hover {
+    border: 1px solid #000;
+    border-width: 5px;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  .container:hover .text {
+    transform: translateX(-15px);
+  }
+
+  .container:hover .text-mid {
+    transform: translateX(25px);
+  }
+  
+  .text, .text-mid {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    
+  }
