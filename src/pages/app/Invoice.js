@@ -22,7 +22,7 @@ const Invoice = () => {
         console.log(sharedWith);
         axios
         .post(
-            'http://onereturn.com/userapi/edit/',
+            'http://localhost:8000/edit/',
             {
               action: action,
               invoiceID: invoiceID,
@@ -50,7 +50,7 @@ const Invoice = () => {
 
     const fetchData = () => {
         const token = Cookies.get('token');
-        axios.get('http://onereturn.com/userapi/get/', {
+        axios.get('http://localhost:8000/get/', {
             params: {
                 type: 'SINGLE',
                 query: invoiceID
@@ -87,7 +87,7 @@ const Invoice = () => {
                         {invoice.items.map((item, itemIndex) => (
                             <div key={itemIndex}>
                                 <i class="fa-solid fa-arrow-left fa-2xl" 
-                                onClick={() => editReceipt('RETURN', invoice.invoice.invoiceID, invoice.invoice.recipientID, '', item.name, data.uid)}></i>
+                                onClick={() => editReceipt('RETURN', invoice.invoice.invoiceID, invoice.invoice.recipientID, '', item.name, data.uuid)}></i>
                                 <h3>{item.name}</h3>
                                 {item.returned && (
                                 <div>

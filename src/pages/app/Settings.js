@@ -28,7 +28,7 @@ const UserSettings = () => {
                 <p>User Settings</p>
                 <ul>
                     <li><span>Name: {data.firstName}</span></li>
-                    <li><span>User ID: {data.uid}</span></li>
+                    <li><span>User ID: {data.uuid}</span></li>
                     <li><span>Email: {data.email}</span></li>
                 </ul>
             </div>

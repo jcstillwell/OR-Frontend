@@ -14,7 +14,7 @@ const Dropdown = () => {
 
     const handleLogout = async (e) => {
 
-        const response = await axios.post('http://onereturn.com/userapi/logout/', {},{
+        const response = await axios.post('http://localhost:8000/logout/', {},{
             headers: {
                 'Authorization': "Token " + token
             }

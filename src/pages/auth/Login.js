@@ -21,7 +21,7 @@ const Login = (props) =>
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://onereturn.com/userapi/authenticate/', {
+            const response = await axios.post('http://localhost:8000/authenticate/', {
                 'email':email,
                 'password':pass,
             });

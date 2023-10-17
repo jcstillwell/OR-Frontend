@@ -19,7 +19,7 @@ const RegisterPreVerify = (props) =>
 
     const checkVerification = async () => {
         if (confirmClicked) {
-            axios.get('http://onereturn.com/userapi/verify/', {
+            axios.get('http://localhost:8000/verify/', {
                 params: {
                     'token': 'null',
                     'method': 'CHECK',
@@ -29,6 +29,9 @@ const RegisterPreVerify = (props) =>
             .then(response => {
                 if (response.data.status === 'OK') {
                     Cookies.set('active-uuid', response.data.uuid, {expires: .05})
+                    console.log(email) //remove
+                    Cookies.set('email_temp_save', email, {expires: .05}) // Extremely insecure remove after demo.
+                    console.log(Cookies.get('email_temp_save'))
                     console.log(response.data);
                     setEmailVerified(true);
                     navigate('/register');
@@ -46,7 +49,7 @@ const RegisterPreVerify = (props) =>
 
         checkVerification();
         try {
-            const response = await axios.post('http://onereturn.com/userapi/sendEmail/', {
+            const response = await axios.post('http://localhost:8000/sendEmail/', {
                 'email':email,
             });
             console.log(response.data);
@@ -113,17 +116,20 @@ const Register = (props) =>
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://onereturn.com/userapi/register/', {
+            const response = await axios.post('http://localhost:8000/register/', {
                 'uuid':Cookies.get('active-uuid'),
                 'first_name':firstName,
                 'last_name':lastName,
                 'password':pass,
             });
 
+            setEmail(Cookies.get('email_temp_save'));
+            console.log(email);
             console.log(response.data);
+            console.log(Cookies.get('email_temp_save'))
             try {
-                const response = await axios.post('http://onereturn.com/userapi/authenticate/', {
-                    'email':email,
+                const response = await axios.post('http://localhost:8000/authenticate/', {
+                    'email': email, // Extremely insecure remove after demo.
                     'password':pass,
                 });
     
