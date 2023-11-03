@@ -155,9 +155,10 @@ const Register = (props) =>
     return (
         <motion.div 
             className='auth-form-container'
-            initial={{width: "80%"}}
-            animate={{width: "70%"}}
-            exit={{width: "60%"}}
+            initial={{x: -1000}}
+            animate={{ x: 0}}
+            exit={{ x: -1000}}
+            transition={{duration: 0.3}}
         >
             <form className='register-form' onSubmit={handleSubmit}>
                 <p>Now you can fill out your personal details here. We will not share this information.</p>

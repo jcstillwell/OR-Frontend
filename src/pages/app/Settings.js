@@ -25,11 +25,13 @@ const UserSettings = () => {
     return (
         <div className="settings-container">
             <div className="settings-box">
+                <h1>Profile</h1>
+                <h2>{data.firstName} {data.lastName}</h2>
                 <p>User Settings</p>
                 <ul>
-                    <li><span>Name: {data.firstName}</span></li>
-                    <li><span>User ID: {data.uuid}</span></li>
-                    <li><span>Email: {data.email}</span></li>
+                    <li>First Name: <input type="text" class="editable-text" placeholder={data.firstName}></input></li>
+                    <li>Last Name: <input type="text" class="editable-text" placeholder={data.lastName}></input></li>
+                    <li>Email: <input type="text" class="editable-text" placeholder={data.email}></input></li>
                 </ul>
             </div>
         </div>

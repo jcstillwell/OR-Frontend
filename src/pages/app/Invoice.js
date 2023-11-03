@@ -2,11 +2,13 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import "./wallet.css";
 
 const Invoice = () => {
 
     const { invoiceID } = useParams();
     const [invoices, setInvoices] = useState([]);
+    const [historyPage, setPage] = useState(false)
 
 
     let data;
@@ -74,43 +76,49 @@ const Invoice = () => {
       
      return (
         <div className="invoice-container">
-          {invoices.map((invoice, index) => (
-                <div key={index}>
-                    <h2 className="invoice-id-label">{invoice.invoice.invoiceID}</h2>
-                    <h3>{invoice.invoice.merchantID}</h3>
-                    <h3>{invoice.invoice.merchantLocNumber}</h3>
-                    <h3>{invoice.invoice.merchantAddress}</h3>
-                    <h3>{invoice.invoice.recipientID}</h3>
-                <div className="item-list-container-expanded">
-                    <div className="item-list-expanded">
-                        <h2>Items:</h2>
-                        {invoice.items.map((item, itemIndex) => (
-                            <div key={itemIndex}>
-                                <i class="fa-solid fa-arrow-left fa-2xl" 
-                                onClick={() => editReceipt('RETURN', invoice.invoice.invoiceID, invoice.invoice.recipientID, '', item.name, data.uuid)}></i>
-                                <h3>{item.name}</h3>
-                                {item.returned && (
-                                <div>
-                                    <p className="returned-label">RETURNED</p>
-                                    <p className="returned-funds">-{item.price}</p>
+            {invoices.map((invoice, index) => (
+                <React.Fragment key={index}>
+                        <h2 className="invoice-id-label">Invoice ID: {invoice.invoice.invoiceID}</h2>
+                        <h3>{invoice.invoice.merchantID}</h3>
+                        <h3>{invoice.invoice.merchantLocNumber}</h3>
+                        <h3>{invoice.invoice.merchantAddress}</h3>
+                        <h3>{invoice.invoice.recipientID}</h3>
+                        <button className="toggle-button" onClick={() => setPage(false)}>Items</button>
+                        <button className="toggle-button" onClick={() => setPage(true)}>History</button>
+                    {!historyPage && (
+                        <div>
+                            <div className="item-list-container-expanded">
+                                <div className="item-list-expanded">
+                                    <h2>Items:</h2>
+                                    {invoice.items.map((item, itemIndex) => (
+                                        <div key={itemIndex} className="ind-item-block">
+                                            <h3>{item.name}</h3>
+                                            {item.returned && (
+                                                <div>
+                                                    <p className="returned-label">RETURNED</p>
+                                                    <p className="returned-funds">-{item.price}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
-                                )}
                             </div>
-                        ))}
-                    </div>
-              </div>
-              <div className="transaction-history-container">
+                        </div>
+                    )}
+                </React.Fragment>
+            ))}
+            {historyPage && ( 
+                <div className="transaction-history-container">
                     <h2>History:</h2>
-                    {invoice.invoice.transactionHistory.map((i, iIndex) => (
-                            <div key={iIndex}>
-                                <h3>{i}</h3>
-                            </div>
+                    {invoices[0]?.invoice.transactionHistory.map((i, iIndex) => (
+                        <div key={iIndex}>
+                            <h3 className="ind-item-block">{i}</h3>
+                        </div>
                     ))}
-              </div>
-            </div>
-          ))}
+                </div>
+            )}
         </div>
-    );
+    );    
 }
 
 export default Invoice;

@@ -145,3 +145,25 @@
     border: 1px solid black;
     border-radius: 20px;
   }
+
+  .invoice-container {
+    position: relative;
+    padding-top: 70px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: blanchedalmond;
+  }
+
+  .invoice-id-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+  }
+
+.ind-item-block {
+    border-bottom: 1px solid black;
+}

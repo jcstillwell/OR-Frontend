@@ -1,4 +1,4 @@
-.menu-container {
+.menu-container-normal {
     position: fixed;
     top: 60px;
     left: 0px;
@@ -7,9 +7,25 @@
     gap: 1.5rem;
     justify-content: flex-start;
     align-items: center;
-    width: 150px;
+    width: 200px;
     height: 100vh;
     background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    transition: ease-in .5s;
+  }
+
+  .menu-container-settings {
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    transition: ease-out .5s;
   }
   
   .menu-item {

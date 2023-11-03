@@ -30,7 +30,16 @@ const Navbar = () => {
                     <>
                         <ul className='nav-menu'>
                             <li className="nav-item">
-                                <Link to="/home" className="nav-links">Home</Link>
+                                <Link to="/home" className="nav-links" smooth={true} duration={500}>Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="section-2" className="nav-links">For Businesses</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="section-3" className="nav-links">Pricing</Link>
+                            </li>
+                            <li>
+                                <Link to="api.onereturn.com" className="nav-links">API</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/login" className="nav-links">Login</Link>
@@ -43,7 +52,7 @@ const Navbar = () => {
                 )}
                 {isAuthenticated && (
                     <>
-                        <ul className='nav-menu'>
+                        <ul className='nav-menu-right'>
                             <li className="nav-item">
                                 <Button />
                             </li>

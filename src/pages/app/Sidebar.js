@@ -14,7 +14,7 @@ const Sidebar = () => {
 
       case 'SETTINGS_BAR':
         return (
-          <div className="menu-container">
+          <div className="menu-container-settings">
             <div className="menu-item" onClick={() => navigate('/settings/user')}>
               <i class="fa-solid fa-user"></i>
               <span className="dash-text">Profile</span>
@@ -31,7 +31,7 @@ const Sidebar = () => {
         );
       case 'WALLET_BAR':
         return (
-          <div className="menu-container">
+          <div className="menu-container-normal">
             <div className="menu-item" onClick={() => navigate('/wallet')}>
               <i class="fa-solid fa-wallet fa-2xl"></i>
               <span className="dash-text">Wallet</span>
